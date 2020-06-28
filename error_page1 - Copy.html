@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>No Back Please</title>
+
+<style id="jsbin-css">
+body
+{
+  background-color: #0799C8;
+  color: #F2F2F2;
+  font-family: calibri;
+}
+
+.message
+{
+  font-size: 18px;
+  font-weight: normal;
+}
+
+input, textarea
+{
+  border: 1px solid #CCCCCC;
+  width: 200px;
+  height: 22px;
+  margin-bottom: 10px;
+}
+
+textarea
+{
+  resize: none;
+  height: 150px;
+}
+</style>
+</head>
+<body>
+
+ <!--  <p class="message">
+    Hi there, 
+    This page is running with the script which will not allow you to go back.
+  </p>
+    
+  <p class="message">
+    Backspace is also disabled but it will work in HTML form elements. Try editing in following controls.
+  </p>
+  
+  <div>
+    <input type="text" />
+  </div>
+  <div>
+    <input type="text" />
+  </div>
+  <div>
+    <textarea></textarea>
+  </div>
+  
+  <p class="message">So yeah, you need to kill this tab because there is <b>No Way Out!!!!</b> (#__#)</p> -->
+  
+  
+<script>
+(function (global) {
+
+	if(typeof (global) === "undefined")
+	{
+		throw new Error("window is undefined");
+	}
+
+    var _hash = "!";
+    var noBackPlease = function () {
+        global.location.href += "#";
+
+		// making sure we have the fruit available for juice....
+		// 50 milliseconds for just once do not cost much (^__^)
+        global.setTimeout(function () {
+            global.location.href += "!";
+        }, 50);
+    };
+	
+	// Earlier we had setInerval here....
+    global.onhashchange = function () {
+        if (global.location.hash !== _hash) {
+            global.location.hash = _hash;
+        }
+    };
+
+    global.onload = function () {
+        
+		noBackPlease();
+
+		// disables backspace on page except on input fields and textarea..
+		document.body.onkeydown = function (e) {
+            var elm = e.target.nodeName.toLowerCase();
+            if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                e.preventDefault();
+            }
+            // stopping event bubbling up the DOM tree..
+            e.stopPropagation();
+        };
+		
+    };
+
+})(window);
+</script>
+
+</body>
+</html>

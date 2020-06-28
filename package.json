@@ -1,0 +1,16 @@
+{
+  "name": "t",
+  "version": "1.0.0",
+  "description": "Go to this folder on cmd\r hit command \"node Server.js\"\r in browser run url \"http://localhost:8082/index.html\"\r Then check counter.csv\r You will get input logic in index.html",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.4.1"
+  }
+}

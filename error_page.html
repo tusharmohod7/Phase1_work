@@ -1,0 +1,120 @@
+<html>
+<head><title>Please Read the instruction</title>
+<style>
+    html { box-sizing: border-box; }
+
+*,
+*::before,
+*::after { box-sizing: inherit; }
+
+body * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: normal 100%/1.15 "Merriweather", serif;
+  background-color: #7ed0f2;
+  color: #fff;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 1298px;
+  height: auto;
+  margin: 2em auto 0 auto;
+}
+
+.box {
+  max-width: 70%;
+  min-height: auto;
+  margin: 0 auto;
+  /*padding: 1em 1em;*/
+  text-align: center;
+}
+
+h4, p:not(:last-of-type) { text-shadow: 0 0 6px #216f79; }
+
+h4 {
+  /*margin: 0 0 0 0;*/
+  font-size: 2em;
+}
+
+p {
+  margin-bottom: 0.1em;
+  font-size: 2em;
+}
+
+p:first-of-type { margin-top: 4em; }
+
+p > a {
+  border-bottom: 1px dashed #216f79;
+  font-style: italic;
+  text-decoration: none;
+  color: #216f79;
+}
+
+p > a:hover { text-shadow: 0 0 6px #216f79; }
+
+p img { vertical-align: bottom; }
+    </style>
+
+
+
+</head>
+
+<div class="wrapper">
+    <div class="box">
+    <p><h4>Security Warning! Please RESTORE window by clicking the restore button in the title bar.</h4></p>
+    <p><img src="sign-warning-icon.png" width = "200px" height="200px"></p>
+    <p><a>Maximizing your window will allow the websites to detect your window size. This is can be used to track you down. <br>
+      You cannot go back now. Please, first RESTORE the browser by clicking the button, close this tab and then continue your browsing in the new tab. PLEASE DO NOT USE TOR BROWSER IN FULL SCREEN.
+    </a></p>
+    </div>
+</div>
+<script >
+  (function (global) {
+
+  if(typeof (global) === "undefined")
+  {
+    throw new Error("window is undefined");
+  }
+
+    var _hash = "!";
+    var noBackPlease = function () {
+        global.location.href += "#";
+
+    // making sure we have the fruit available for juice....
+    // 50 milliseconds for just once do not cost much (^__^)
+        global.setTimeout(function () {
+            global.location.href += "!";
+        }, 50);
+    };
+  
+  // Earlier we had setInerval here....
+    global.onhashchange = function () {
+        if (global.location.hash !== _hash) {
+            global.location.hash = _hash;
+        }
+    };
+
+    global.onload = function () {
+        
+    noBackPlease();
+
+    // disables backspace on page except on input fields and textarea..
+    document.body.onkeydown = function (e) {
+            var elm = e.target.nodeName.toLowerCase();
+            if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                e.preventDefault();
+            }
+            // stopping event bubbling up the DOM tree..
+            e.stopPropagation();
+        };
+    
+    };
+
+})(window);
+</script>
+
+</html>

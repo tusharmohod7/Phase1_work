@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+function updateCount(keyName)
+{
+	$.ajax({
+		type : 'GET',
+		url : 'http://localhost:8082/updateCount?keyName='+keyName,
+		dataType:'json',
+		async: false
+	}).done(function(data){
+		console.log(data);
+	});
+}
+
+</script>
+</body>
+</html>
